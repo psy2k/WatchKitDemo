@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchKitDemo_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <table alignment="left" id="eVv-8Y-rLa">
+                            <items>
+                                <tableRow identifier="ArticleRow" id="cgT-7U-6CX" customClass="ArticleRow" customModule="WatchKitDemo_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="v2j-Y9-ro1">
+                                        <items>
+                                            <label alignment="left" text="Label" id="cGQ-E0-dnb">
+                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                            </label>
+                                            <label alignment="left" text="Label" id="GWi-XK-SBM"/>
+                                        </items>
+                                        <connections>
+                                            <segue destination="JJG-kE-nuY" kind="push" identifier="articleDetails" id="SAA-6o-ccb"/>
+                                        </connections>
+                                    </group>
+                                    <connections>
+                                        <outlet property="detailLabel" destination="GWi-XK-SBM" id="LH4-sQ-jnk"/>
+                                        <outlet property="titleLabel" destination="cGQ-E0-dnb" id="alP-XZ-gYy"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="newsTable" destination="eVv-8Y-rLa" id="qTf-yg-XS7"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="150" y="176"/>
+        </scene>
+        <!--Article Detail Interface Controller-->
+        <scene sceneID="VmR-EE-X4p">
+            <objects>
+                <controller id="JJG-kE-nuY" customClass="ArticleDetailInterfaceController" customModule="WatchKitDemo_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="kca-DH-Vhh">
+                            <items>
+                                <tableRow identifier="ArticleDetailsRow" id="uAz-kr-dNb" customClass="ArticleDetailRow" customModule="WatchKitDemo_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="HCQ-sc-uiI">
+                                        <items>
+                                            <label alignment="left" text="Label" numberOfLines="0" id="Yro-sw-C7w"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="textLabel" destination="Yro-sw-C7w" id="vGm-uX-M8g"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="articleDetailTable" destination="kca-DH-Vhh" id="rgT-ae-mbu"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="379" y="176"/>
+        </scene>
+    </scenes>
+</document>
