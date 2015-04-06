@@ -47,8 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let request = userInfo["request"] as? String {
             if request == "refreshData" {
                 
-                //let coins = coinHelper.requestPriceSynchronous()
-                
                 var parser = XMLParser()
                 parser.startParsing(NSURL(string: "http://www.ds.unipi.gr/category/announcements/feed/")!, completionClosure: {(articles, error) in
                     if error == nil {
