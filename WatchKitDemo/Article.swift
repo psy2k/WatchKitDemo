@@ -19,11 +19,11 @@ class Article : NSObject, NSCoding, Printable {
     
     required convenience init(coder decoder: NSCoder) {
         self.init()
-        self.postTitle = decoder.decodeObjectForKey("postTitle") as String!
-        self.postLink = decoder.decodeObjectForKey("postLink") as String!
-        self.postDescription = decoder.decodeObjectForKey("postDescription") as String!
-        self.articleDetails = decoder.decodeObjectForKey("articleDetails") as String!
-        self.pubDate = decoder.decodeObjectForKey("pubDate") as NSDate!
+        self.postTitle = decoder.decodeObjectForKey("postTitle") as! String
+        self.postLink = decoder.decodeObjectForKey("postLink")as! String
+        self.postDescription = decoder.decodeObjectForKey("postDescription")as! String
+        self.articleDetails = decoder.decodeObjectForKey("articleDetails") as! String
+        self.pubDate = decoder.decodeObjectForKey("pubDate") as! NSDate
     }
     
     func encodeWithCoder(coder: NSCoder) {
