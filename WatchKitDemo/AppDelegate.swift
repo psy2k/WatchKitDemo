@@ -42,9 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: WatchKit app
-    func application(application: UIApplication!, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]!, reply: (([NSObject : AnyObject]!) -> Void)!) {
-        
-        if let request = userInfo["request"] as? String {
+    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
+        if userInfo != nil {
+        if let request = userInfo!["request"] as? String {
             if request == "refreshData" {
                 
                 var parser = XMLParser()
@@ -55,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 })
             }
+        }
         }
     }
 

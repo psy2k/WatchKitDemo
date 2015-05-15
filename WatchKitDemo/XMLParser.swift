@@ -41,7 +41,7 @@ class XMLParser: NSObject, NSXMLParserDelegate {
     
     // MARK: - NSXMLParserDelegate methods
     
-    func parser(parser: NSXMLParser!, didStartElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!, attributes attributeDict: [NSObject : AnyObject]!) {
+    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [NSObject : AnyObject]) {
         eName = elementName
         if elementName == "item" {
             postTitle = String()
@@ -52,9 +52,9 @@ class XMLParser: NSObject, NSXMLParserDelegate {
         }
     }
     
-    func parser(parser: NSXMLParser!, foundCharacters string: String!) {
-        let data = string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        let dataWithLines = string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+    func parser(parser: NSXMLParser, foundCharacters string: String?) {
+        let data = string!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let dataWithLines = string!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         if (!data.isEmpty) {
             if eName == "title" {
                 postTitle += data
@@ -78,7 +78,7 @@ class XMLParser: NSObject, NSXMLParserDelegate {
         }
     }
     
-    func parser(parser: NSXMLParser!, didEndElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!) {
+    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "item" {
             let article : Article = Article()
             article.postTitle = postTitle
@@ -95,11 +95,11 @@ class XMLParser: NSObject, NSXMLParserDelegate {
         delegate?.parsingWasFinished()
     }
     
-    func parser(parser: NSXMLParser, parseErrorOccurred parseError: NSError!) {
+    func parser(parser: NSXMLParser, parseErrorOccurred parseError: NSError) {
         Log.println(parseError.description)
     }
     
-    func parser(parser: NSXMLParser, validationErrorOccurred validationError: NSError!) {
+    func parser(parser: NSXMLParser, validationErrorOccurred validationError: NSError) {
         Log.println(validationError.description)
     }
     
