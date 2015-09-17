@@ -51,12 +51,12 @@ class InterfaceController: WKInterfaceController {
     func reloadTable() {
         newsTable.setNumberOfRows(articles.count, withRowType: "ArticleRow")
         
-        for (index, article) in enumerate(articles) {
+        for (index, article) in articles.enumerate() {
             if let row = newsTable.rowControllerAtIndex(index) as? ArticleRow {
-                var currentTitle: String! = article.postTitle
+                let currentTitle: String! = article.postTitle
                 let finalTitleArray = currentTitle.componentsSeparatedByString("–")
                 
-                var finalTitle: String = finalTitleArray[1].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+                let finalTitle: String = finalTitleArray[1].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
                 row.titleLabel.setText(finalTitle)
                 row.detailLabel.setText(article.postDescription)
             }

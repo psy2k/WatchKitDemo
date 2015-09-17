@@ -28,7 +28,7 @@ class ArticleDetailInterfaceController: WKInterfaceController {
         articleDetailTable.setNumberOfRows(1, withRowType: "ArticleDetailsRow")
         
         if let row = articleDetailTable.rowControllerAtIndex(0) as? ArticleDetailRow {
-            var articleDescription: String! = article.postDescription
+            let articleDescription: String! = article.postDescription
             row.textLabel.setText(articleDescription)
         }
     }

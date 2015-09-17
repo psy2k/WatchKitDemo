@@ -42,12 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: WatchKit app
-    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
+    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]?) -> Void)) {
         if userInfo != nil {
         if let request = userInfo!["request"] as? String {
             if request == "refreshData" {
                 
-                var parser = XMLParser()
+                let parser = XMLParser()
                 parser.startParsing(NSURL(string: "http://www.ds.unipi.gr/category/announcements/feed/")!, completionClosure: {(articles, error) in
                     if error == nil {
                         reply(["articleData": NSKeyedArchiver.archivedDataWithRootObject(articles!)])

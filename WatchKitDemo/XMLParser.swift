@@ -41,7 +41,7 @@ class XMLParser: NSObject, NSXMLParserDelegate {
     
     // MARK: - NSXMLParserDelegate methods
     
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [NSObject : AnyObject]) {
+    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         eName = elementName
         if elementName == "item" {
             postTitle = String()
@@ -52,9 +52,9 @@ class XMLParser: NSObject, NSXMLParserDelegate {
         }
     }
     
-    func parser(parser: NSXMLParser, foundCharacters string: String?) {
-        let data = string!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        let dataWithLines = string!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+    func parser(parser: NSXMLParser, foundCharacters string: String) {
+        let data = string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let dataWithLines = string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         if (!data.isEmpty) {
             if eName == "title" {
                 postTitle += data
@@ -62,7 +62,7 @@ class XMLParser: NSObject, NSXMLParserDelegate {
                 postLink += data
             } else if eName == "content:encoded" {
                 let strClean = data.stringByReplacingOccurrencesOfString("<[^>]+>", withString: "", options: .RegularExpressionSearch, range: nil)
-                var decodedString = String.stringByRemovingHTMLEntities(strClean)
+                let decodedString = String.stringByRemovingHTMLEntities(strClean)
                 postDescription += decodedString
                 articleDetails += dataWithLines
             } else if eName == "pubDate" {
