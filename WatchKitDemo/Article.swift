@@ -9,7 +9,7 @@
 import Foundation
 
 @objc(Article)
-class Article : NSObject, NSCoding, Printable {
+class Article : NSObject {
     
     var postTitle: String = String()
     var postLink: String = String()
@@ -17,7 +17,7 @@ class Article : NSObject, NSCoding, Printable {
     var articleDetails : String = String()
     var pubDate : NSDate = NSDate()
     
-    required convenience init(coder decoder: NSCoder) {
+    required convenience init?(coder decoder: NSCoder) {
         self.init()
         self.postTitle = decoder.decodeObjectForKey("postTitle") as! String
         self.postLink = decoder.decodeObjectForKey("postLink")as! String
